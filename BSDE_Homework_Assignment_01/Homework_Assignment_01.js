@@ -39,7 +39,7 @@ while (binary > 0) {
     
 
     // 4.2 Posun binárního čísla
-    // Posuneme binární číslo o jednu číslici doleva odstraněním poslední číslice
+    // Posuneme binární číslo o jednu číslici doleva, odstraněníme poslední číslici
     binary = Math.floor(binary / 10);
 
 
