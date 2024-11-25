@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <!-- Deklarace dokumentu HTML5 a nastavení jazyka na češtinu -->
+    <meta charset="UTF-8" />
+    <!-- Nastavení viewportu pro responsivní design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Odkaz na favicon (ikona webu zobrazená v záložkách nebo liště) -->
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="./assets/img/favicon.png"
+    />
+    <meta name="author" content="Vít Zeman" />
+    <!-- Název stránky, který se zobrazí na záložce -->
+    <title>binToDec</title>
+    <!-- Připojení externího CSS souboru pro stylování -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Hlavní karta obsahující obsah stránky -->
+      <div class="card">
+        <!-- Nadpis stránky -->
+        <h1>Převod čísla z binární do desítkové soustavy</h1>
+        <!-- Popisek k vstupnímu poli -->
+        <label for="number">Vložte binární číslo</label>
+        <div class="input-flex">
+          <!-- Vstupní pole pro zadání binárního čísla -->
+          <input
+            type="number"
+            name="number"
+            placeholder="e.g 10111011"
+            id="number"
+          />
+          <!-- Tlačítko pro spuštění výpočtu -->
+          <button id="calc-btn" onclick="calc()">Vypočítat</button>
+        </div>
+        <!-- Výsledek převodu, který se zobrazí dynamicky -->
+        <h2>Výsledek: <span id="answer">0</span></h2>
+      </div>
+    </div>
+    <!-- Interní JavaScript pro výpočet převodu -->
+    <script type="text/javascript">
+      const numInput = document.getElementById("number"); // Získání vstupního pole
+
+      /**
+       * Funkce, která se spustí po kliknutí na tlačítko.
+       * Načítá hodnotu zadanou uživatelem, provede převod
+       * z binární do desítkové soustavy a zobrazí výsledek.
+       */
+      function calc() {
+        const numValue = numInput.value; // Načtení hodnoty zadané uživatelem
+        const answerElement = document.getElementById("answer"); // Element pro zobrazení výsledku
+        const answer = binaryToDecimal(numValue); // Volání funkce pro převod
+        answerElement.innerHTML = answer; // Zobrazení výsledku v HTML
+      }
+
+      /**
+       * Funkce pro sledování stiknutí tlačítka ENTER
+       * Pokud uživatel stiskne ENTER a je aktuálně v input poli, provede se akce
+       */
+      numInput.addEventListener("keypress", function (event) {
+        // Odposlouchávání akce keypress
+        if (event.key === "Enter") {
+          // Pokud je keypress ENTER
+          event.preventDefault(); // Zabrání se výchozímu chování
+          document.getElementById("calc-btn").click(); // Simuluje se kliknutí na talačítko výpoočtu
+        }
+      });
+    </script>
+    <!-- Externí JavaScript soubor s funkcí binaryToDecimal -->
+    <script type="text/javascript" src="./Homework_Assignment_02.js"></script>
+  </body>
+</html>

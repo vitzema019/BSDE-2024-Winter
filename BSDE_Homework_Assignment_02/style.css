@@ -1,0 +1,157 @@
+/* Import fontů Poppins a Roboto z Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* Globální nastavení pro HTML */
+html {
+  font-size: 16px; /* Výchozí velikost písma */
+  font-family: "Poppins", sans-serif; /* Výchozí font pro celé tělo dokumentu */
+}
+
+/* Stylování tlačítek */
+button {
+  all: initial; /* Reset všech stylů tlačítka */
+  font-family: "Roboto", sans-serif; /* Použití fontu Roboto */
+  font-size: 1rem; /* Velikost písma */
+  font-weight: 500; /* Tloušťka písma */
+  text-align: center; /* Zarovnání textu */
+  text-decoration: none; /* Zrušení podtržení textu */
+}
+
+/* Stylování hlavního nadpisu (h1) */
+h1 {
+  font-family: "Roboto", sans-serif; /* Použití fontu Roboto */
+  font-size: 1.8rem; /* Velikost písma */
+  font-weight: 500; /* Tloušťka písma */
+  text-align: center; /* Zarovnání na střed */
+}
+
+/* Stylování podnadpisu (h2) */
+h2 {
+  font-family: "Roboto", sans-serif; /* Použití fontu Roboto */
+  font-size: 1.4rem; /* Velikost písma */
+  font-weight: 400; /* Normální tloušťka písma */
+}
+
+/* Stylování odstavců a popisků (p, label) */
+p,
+label {
+  font-family: "Poppins", sans-serif; /* Použití fontu Poppins */
+  font-size: 1.1rem; /* Velikost písma */
+  font-weight: 400; /* Normální tloušťka písma */
+  line-height: 1.7rem; /* Výška řádku pro lepší čitelnost */
+}
+
+/* Stylování label elementů */
+label {
+  width: 100%; /* Šířka 100% rodičovského kontejneru */
+  text-align: start; /* Zarovnání textu vlevo */
+}
+
+/* Stylování karty (card) */
+.card {
+  display: flex; /* Flexbox pro zajištění rozvržení obsahu */
+  flex-direction: column; /* Směr uspořádání prvků (sloupec) */
+  align-items: center; /* Zarovnání obsahu na střed */
+  overflow: hidden; /* Skrytí obsahu přesahujícího okraje */
+  background-color: #ffffff; /* Bílá barva pozadí */
+  padding: 1rem 2rem; /* Vnitřní odsazení */
+  z-index: 2; /* Vrstva nad ostatním obsahem */
+  text-align: center; /* Zarovnání textu na střed */
+  box-shadow: 0.1rem 0.1rem 0.5rem #0000007a; /* Stín pod kartou */
+  border-radius: 10px; /* Zaoblení rohů */
+  max-width: 600px; /* Maximální šířka */
+  margin: 0 auto; /* Vycentrování na stránce */
+}
+
+/* Stylování vstupních polí v rámci karty */
+.card input {
+  width: 100%; /* Šířka 100% rodičovského kontejneru */
+  padding: 10px; /* Vnitřní odsazení */
+  margin: 8px 0; /* Vnější odsazení */
+  box-sizing: border-box; /* Zahrnutí okrajů do výpočtu velikosti */
+  border: 1px solid #ccc; /* Šedý okraj */
+  border-radius: 4px; /* Zaoblení rohů */
+  resize: vertical; /* Umožnění změny výšky */
+}
+
+/* Stylování tlačítek v rámci karty */
+.card button {
+  margin-top: 0.4rem; /* Horní odsazení */
+  margin-bottom: 0.4rem; /* Dolní odsazení */
+  border-radius: 15px; /* Zaoblení rohů */
+  padding: 0.5rem 1rem; /* Vnitřní odsazení */
+  background-color: #979797; /* Šedá barva pozadí */
+  display: inline-block; /* Zobrazení jako inline blok */
+  cursor: pointer; /* Změna kurzoru na ruku při najetí */
+  transition: background-color 0.3s ease-in-out; /* Plynulý přechod při změně barvy */
+  color: white; /* Barva textu */
+}
+
+/* Styl tlačítka při najetí myší */
+.card button:hover {
+  background-color: #b7b7b7; /* Světlejší šedá při najetí */
+}
+
+/* Stylování hlavního kontejneru */
+.container {
+  margin: 0 auto; /* Vycentrování obsahu */
+}
+
+/* Flexbox pro rozvržení vstupního pole a tlačítka */
+.input-flex {
+  display: flex; /* Aktivace flexboxu */
+  width: 100%; /* Šířka 100% rodičovského kontejneru */
+  gap: 1rem; /* Mezery mezi prvky */
+  flex-direction: row; /* Uspořádání prvků vedle sebe */
+  justify-content: space-around; /* Rovnoměrné rozložení prvků */
+  align-items: center; /* Vertikální zarovnání prvků na střed */
+}
+
+/* Responsivní styly pro různé šířky obrazovky */
+
+/* Pro obrazovky s šířkou max. 992px */
+@media (max-width: 992px) {
+  html {
+    font-size: 15px; /* Menší základní velikost písma */
+  }
+}
+
+/* Pro obrazovky s šířkou max. 768px */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Ještě menší velikost písma */
+  }
+}
+
+/* Pro obrazovky s šířkou max. 600px */
+@media (max-width: 600px) {
+  html {
+    font-size: 13px; /* Další zmenšení písma */
+  }
+}
+
+/* Pro obrazovky s šířkou max. 430px */
+@media (max-width: 430px) {
+  html {
+    font-size: 12px; /* Zmenšení základního písma */
+  }
+  .input-flex {
+    flex-direction: column; /* Změna uspořádání prvků do sloupce */
+    align-items: stretch; /* Přizpůsobení šířky */
+    gap: 0; /* Zrušení mezer mezi prvky */
+  }
+}
+
+/* Pro obrazovky s šířkou max. 400px */
+@media (max-width: 400px) {
+  html {
+    font-size: 11px; /* Ještě menší velikost písma */
+  }
+}
+
+/* Pro obrazovky s šířkou max. 320px */
+@media (max-width: 320px) {
+  html {
+    font-size: 10px; /* Minimální velikost písma */
+  }
+}
