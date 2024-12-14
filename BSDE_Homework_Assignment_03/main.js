@@ -1,6 +1,6 @@
 /**
  * Autor: Vít Zeman
- * Zadání: BSDE 2024 Winter Zadání domácí úkol / homework assignment 02
+ * Zadání: BSDE 2024 Winter Zadání domácí úkol / homework assignment 03
  * Škola: Unicorn University
  */
 /**
@@ -36,31 +36,63 @@
  * // ]
  */
 export function main(dtoIn) {
+    /**
+     * Validates the input data for the main function.
+     * @param {object} dtoIn - The input data to validate.
+     * @throws {Error} Throws an error if the input data is invalid.
+     */
+    function validateDtoIn(dtoIn) {
+        if (!dtoIn || typeof dtoIn !== "object") {
+            throw new Error("Input data must be an object.");
+        }
+
+        if (!Number.isInteger(dtoIn.count) || dtoIn.count <= 0) {
+            throw new Error("'count' must be a positive integer.");
+        }
+
+        if (!dtoIn.age || typeof dtoIn.age !== "object") {
+            throw new Error("'age' must be an object with 'min' and 'max' properties.");
+        }
+
+        const { min, max } = dtoIn.age;
+
+        if (!Number.isInteger(min) || !Number.isInteger(max) || min < 0 || max < 0 || min > max) {
+            throw new Error("'min' and 'max' must be positive integers, and 'min' must be less than 'max'.");
+        }
+    }
+
+    validateDtoIn(dtoIn);
+
     const dtoOut = [];
-    const names = [
+    const maleNames = [
         "Jan", "Petr", "Jiří", "Martin", "Tomáš",
         "Lukáš", "Marek", "Josef", "Jaroslav", "Václav",
         "Milan", "Radek", "Roman", "Karel", "David",
         "Michal", "Ondřej", "Filip", "Aleš", "Zdeněk",
+        "Vojtěch", "Daniel", "Adam", "Štěpán", "Patrik"
+    ];
+    const femaleNames = [
         "Eva", "Marie", "Jana", "Petra", "Martina",
         "Lenka", "Alena", "Kateřina", "Veronika", "Hana",
         "Lucie", "Michaela", "Markéta", "Tereza", "Ivana",
         "Barbora", "Anna", "Kristýna", "Monika", "Dana",
-        "Zuzana", "Andrea", "Šárka", "Helena", "Eliška",
-        "Blanka", "Dagmar", "Radka", "Karolína", "Simona"
+        "Zuzana", "Andrea", "Šárka", "Helena", "Eliška"
     ];
-    const surnames = [
+    const maleSurnames = [
         "Novák", "Svoboda", "Novotný", "Dvořák", "Černý",
         "Procházka", "Kučera", "Veselý", "Horák", "Němec",
         "Pokorný", "Marek", "Pospíšil", "Hájek", "Jelínek",
         "Král", "Růžička", "Beneš", "Fiala", "Sedláček",
-        "Doležal", "Zeman", "Kolář", "Navrátil", "Čermák",
-        "Urban", "Vaněk", "Blažek", "Kovář", "Kratochvíl",
-        "Jirásek", "Němcová", "Kuřeová", "Malá", "Vávrová",
-        "Konečná", "Machová", "Krejčí", "Tomanová", "Polák",
+        "Doležal", "Zeman", "Kolář", "Navrátil", "Čermák"
+    ];
+    const femaleSurnames = [
+        "Urbanová", "Vaňková", "Blažková", "Kovářová", "Kratochvílová",
+        "Jirásková", "Němcová", "Kuřeová", "Malá", "Vávrová",
+        "Konečná", "Machová", "Krejčí", "Tomanová", "Poláková",
         "Vrbová", "Beránková", "Hrdličková", "Valentová", "Šimková",
         "Holubová", "Bartošová", "Kováčová", "Zelenková", "Sedláčková"
     ];
+    
     const genders = ["male", "female"];
     const workLoads = [10, 20, 30, 40];
 
@@ -102,11 +134,27 @@ export function main(dtoIn) {
 
     // Generate employees
     for (let i = 0; i < dtoIn.count; i++) {
+        const gender = getRadomArrayItem(genders);
+        let name;
+        let surname;
+        // this code is needed only because we work with czech names and surnames.
+        // ---------------------------
+        switch(gender){
+            case "male":
+                name = getRadomArrayItem(maleNames);
+                surname = getRadomArrayItem(maleSurnames);
+                break;
+            case "female":
+                name = getRadomArrayItem(femaleNames);
+                surname = getRadomArrayItem(femaleSurnames);
+                break;
+        }
+        // ---------------------------
         dtoOut.push({
-            gender: getRadomArrayItem(genders),
+            gender: gender,
             birthdate: getRandomBirthDay(dtoIn.age.min, dtoIn.age.max),
-            name: getRadomArrayItem(names),
-            surname: getRadomArrayItem(surnames),
+            name: name,
+            surname: surname,
             workload: getRadomArrayItem(workLoads)
         });
     }
@@ -117,9 +165,11 @@ export function main(dtoIn) {
 const dtoIn = {
     count: 50,
     age: {
-      min: 19,
-      max: 35
+      min: 18,
+      max: 65
     }
   }
 
-console.log(main(dtoIn));
+  const employees = main(dtoIn);
+
+console.log(employees);
